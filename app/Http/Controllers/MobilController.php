@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Barang;
+use App\Mobil;
 use Illuminate\Http\Request;
 
-class BarangController extends Controller
+class MobilController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class BarangController extends Controller
      */
     public function index()
     {
-        $barangs = Barang::all() ;
-        return view('barang', ['barangs'=>$barangs, 'layout'=>'index']);
+        $mobils = Mobil::all() ;
+        return view('mobil', ['mobils'=>$mobils, 'layout'=>'index']);
     }
 
     /**
@@ -25,8 +25,8 @@ class BarangController extends Controller
      */
     public function create()
     {
-        $barangs = Barang::all() ;
-        return view('barang', ['barangs'=>$barangs, 'layout'=>'create']);
+        $mobils = Mobil::all() ;
+        return view('mobil', ['mobils'=>$mobils, 'layout'=>'create']);
     }
 
     /**
@@ -37,13 +37,11 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        $barang = new Barang() ;
-        $barang->kode_barang = $request->input('kode_barang');
-        $barang->nama_barang = $request->input('nama_barang');
-        $barang->jenis_barang = $request->input('jenis_barang');
-        $barang->jumlah_barang = $request->input('jumlah_barang');
-        $barang->letak_barang = $request->input('letak_barang');
-        $barang->save() ;
+        $mobil = new Mobil() ;
+        $mobil->nama = $request->input('nama');
+        $mobil->harga = $request->input('harga');
+        $mobil->stock = $request->input('stock');
+        $mobil->save() ;
         return redirect('/') ;
     }
 
@@ -55,9 +53,9 @@ class BarangController extends Controller
      */
     public function show($id)
     {
-        $barang = Barang::find($id);
-        $barangs = Barang::all() ;
-        return view('barang', ['barangs'=>$barangs, 'barang'=>$barang, 'layout'=>'show']);
+        $mobil = Mobil::find($id);
+        $mobils = Mobil::all() ;
+        return view('mobil', ['mobils'=>$mobils, 'mobil'=>$mobil, 'layout'=>'show']);
     }
 
     /**
@@ -68,9 +66,9 @@ class BarangController extends Controller
      */
     public function edit($id)
     {
-        $barang = Barang::find($id);
-        $barangs = Barang::all() ;
-        return view('barang', ['barangs'=>$barangs, 'barang'=>$barang, 'layout'=>'edit']);
+        $mobil = Mobil::find($id);
+        $mobils = Mobil::all() ;
+        return view('mobil', ['mobils'=>$mobils, 'mobil'=>$mobil, 'layout'=>'edit']);
     }
 
     /**
@@ -82,13 +80,11 @@ class BarangController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $barang = Barang::find($id);
-        $barang->kode_barang = $request->input('kode_barang');
-        $barang->nama_barang = $request->input('nama_barang');
-        $barang->jenis_barang = $request->input('jenis_barang');
-        $barang->jumlah_barang = $request->input('jumlah_barang');
-        $barang->letak_barang = $request->input('letak_barang');
-        $barang->save() ;
+        $mobil = Mobil::find($id);
+        $mobil->nama = $request->input('nama');
+        $mobil->harga = $request->input('harga');
+        $mobil->stock = $request->input('stock');
+        $mobil->save() ;
         return redirect('/') ;
     }
 
@@ -100,8 +96,8 @@ class BarangController extends Controller
      */
     public function destroy($id)
     {
-        $barang = Barang::find($id);
-        $barang->delete() ;
+        $mobil = Mobil::find($id);
+        $mobil->delete() ;
         return redirect('/') ;
     }
 }

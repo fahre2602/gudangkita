@@ -66,6 +66,12 @@ input[type=text]:focus{
     background: #00c9b7 !important;
     border: none !important;
 }
+.currency:before {
+    content: "Rp. "
+}
+.currency:after {
+    content: ",-"
+}
 footer {
     height: 10px;
     width: 100%;

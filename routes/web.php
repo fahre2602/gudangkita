@@ -17,12 +17,23 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::resource('barangs', 'BarangController') ;
+Route::resource('mobils', 'MobilController') ;
 
-Route::get('/', "BarangController@index") ;
-Route::get('/edit/{id}', "BarangController@edit") ; 
-Route::get('/show/{id}', "BarangController@show") ;
-Route::get('/create', "BarangController@create") ;
-Route::post('/store', "BarangController@store") ;
-Route::post('/update/{id}', "BarangController@update") ;
-Route::get('/delete/{id}', "BarangController@destroy") ;
+Route::get('/', "MobilController@index") ;
+Route::get('/edit/{id}', "MobilController@edit") ; 
+Route::get('/show/{id}', "MobilController@show") ;
+Route::get('/create', "MobilController@create") ;
+Route::post('/store', "MobilController@store") ;
+Route::post('/update/{id}', "MobilController@update") ;
+Route::get('/delete/{id}', "MobilController@destroy") ;
+
+Route::resource('penjualans', 'PenjualanController') ;
+
+Route::get('/penjualans', "PenjualanController@index") ;
+Route::get('/penjualan/edit/{id}', "PenjualanController@edit") ; 
+Route::get('/penjualan/show/{id}', "PenjualanController@show") ;
+Route::get('/penjualan/create', "PenjualanController@create") ;
+Route::post('/penjualan/store', "PenjualanController@store") ;
+Route::post('/penjualan/update/{id}', "PenjualanController@update") ;
+Route::get('/penjualan/delete/{id}', "PenjualanController@destroy") ;
+Route::get('/penjualan/rekap', "PenjualanController@rekap") ; 

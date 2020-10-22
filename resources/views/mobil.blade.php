@@ -9,20 +9,20 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <title>GudangKita</title>
+    <title>MobilKita</title>
   </head>
   <body>
     @include("navbar")
     <div class="row header-container justify-content-center">
         <div class="header">
-            <h1>GudangKita Management System</h1>
+            <h1>MobilKita Management System</h1>
         </div>
     </div>
     @if($layout == 'index')
         <div class="container-fluid mt-4">
             <div class="row">
                 <section class="col-md-7">
-                    @include("barangslist")
+                    @include("mobilslist")
                 </section>
                 <section class="col-md-5">
                 </section>
@@ -32,34 +32,26 @@
         <div class="container-fluid mt-4">
             <div class="row">
                 <section class="col-md-7">
-                    @include("barangslist")
+                    @include("mobilslist")
                 </section>
                 <section class="col-md-5">
                     <div class="card mb-3">
                         <img src="https://www.pinclipart.com/picdir/middle/331-3310654_amazon-referral-fees-add-to-warehouse-icon-clipart.png" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Masukkan Data Barang Baru</h5>
+                            <h5 class="card-title">Masukkan Data Mobil Baru</h5>
                             <form action="{{ url('/store') }}" method="post">
                                 @csrf
                                 <div class="form-group">
-                                    <label>Kode Barang</label>
-                                    <input name="kode_barang" type="text" class="form-control" placeholder="Masukkan kode barang">
+                                    <label>Nama</label>
+                                    <input name="nama" type="text" class="form-control" placeholder="Masukkan Nama Mobil">
                                 </div>
                                 <div class="form-group">
-                                    <label>Nama Barang</label>
-                                    <input name="nama_barang" type="text" class="form-control" placeholder="Masukkan nama barang">
+                                    <label>Harga</label>
+                                    <input name="harga" type="text" class="form-control" placeholder="Masukkan Harga Mobil">
                                 </div>
                                 <div class="form-group">
-                                    <label>Jenis Barang</label>
-                                    <input name="jenis_barang" type="text" class="form-control" placeholder="Masukkan jenis barang">
-                                </div>
-                                <div class="form-group">
-                                    <label>Jumlah Barang</label>
-                                    <input name="jumlah_barang" type="text" class="form-control" placeholder="Masukkan jumlah barang">
-                                </div>
-                                <div class="form-group">
-                                    <label>Letak Barang</label>
-                                    <input name="letak_barang" type="text" class="form-control" placeholder="Masukkan letak barang">
+                                    <label>Stock</label>
+                                    <input name="stock" type="text" class="form-control" placeholder="Masukkan Stock Mobil">
                                 </div>
                                 <input type="submit" class="btn btn-info" value="Save">
                                 <input type="reset" class="btn btn-warning" value="Reset">
@@ -73,7 +65,7 @@
         <div class="container-fluid mt-4">
             <div class="row">
                 <section class="col">
-                    @include("barangslist")
+                    @include("mobilslist")
                 </section>
                 <section class="col">
                 </section>
@@ -83,34 +75,26 @@
         <div class="container-fluid mt-4">
             <div class="row">
                 <section class="col-md-7">
-                    @include("barangslist")
+                    @include("mobilslist")
                 </section>
                 <section class="col-md-5">
                     <div class="card mb-3">
                         <img src="https://www.pinclipart.com/picdir/middle/331-3310654_amazon-referral-fees-add-to-warehouse-icon-clipart.png" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Update Data Barang</h5>
-                            <form action="{{ url('/update/'.$barang->id) }}" method="post">
+                            <h5 class="card-title">Update Data Mobil</h5>
+                            <form action="{{ url('/update/'.$mobil->id) }}" method="post">
                                 @csrf
                                 <div class="form-group">
-                                    <label>Kode Barang</label>
-                                    <input value="{{ $barang->kode_barang }}" name="kode_barang" type="text" class="form-control" placeholder="Masukkan kode barang">
+                                    <label>Nama Mobil</label>
+                                    <input value="{{ $mobil->nama }}" name="nama" type="text" class="form-control" placeholder="Masukkan Nama Mobil">
                                 </div>
                                 <div class="form-group">
-                                    <label>Nama Barang</label>
-                                    <input value="{{ $barang->nama_barang }}" name="nama_barang" type="text" class="form-control" placeholder="Masukkan nama barang">
+                                    <label>Harga</label>
+                                    <input value="{{ $mobil->harga }}" name="harga" type="text" class="form-control" placeholder="Masukkan Harga Mobil">
                                 </div>
                                 <div class="form-group">
-                                    <label>Jenis Barang</label>
-                                    <input value="{{ $barang->jenis_barang }}" name="jenis_barang" type="text" class="form-control" placeholder="Masukkan jenis barang">
-                                </div>
-                                <div class="form-group">
-                                    <label>Jumlah Barang</label>
-                                    <input value="{{ $barang->jumlah_barang }}" name="jumlah_barang" type="text" class="form-control" placeholder="Masukkan jumlah barang">
-                                </div>
-                                <div class="form-group">
-                                    <label>Letak Barang</label>
-                                    <input value="{{ $barang->letak_barang }}" name="letak_barang" type="text" class="form-control" placeholder="Masukkan letak barang">
+                                    <label>Stock</label>
+                                    <input value="{{ $mobil->stock }}" name="stock" type="text" class="form-control" placeholder="Masukkan Stock Mobil">
                                 </div>
                                 <input type="submit" class="btn btn-info" value="Update">
                                 <input type="reset" class="btn btn-warning" value="Reset">
